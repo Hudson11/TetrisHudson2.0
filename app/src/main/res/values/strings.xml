@@ -15,6 +15,6 @@
     <!--Activity_configurações-->
     <string name="pecas_partida">Selecione a Quantidade de Peças da Partida</string>
     <string name="velovidade_jogo">Velocidade do jogo</string>
-
+    <string name="aplicar">Aplicar</string>
 
 </resources>

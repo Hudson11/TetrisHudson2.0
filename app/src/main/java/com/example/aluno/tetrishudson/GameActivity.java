@@ -1,7 +1,9 @@
 package com.example.aluno.tetrishudson;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.GridLayout;
 import android.widget.ImageView;
@@ -21,22 +23,22 @@ public class GameActivity extends AppCompatActivity {
     GridLayout layout;
     TextView pontos;
 
-    //vetor de peças
-    ArrayList <ArrayList<Integer>> pecas;
-    //peca;
-    ArrayList<Integer> peca;
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
+        //
+        int velocidade = 400, nivel = 4;
         //Recebe informações passadas através da Intent criada em Config.activity
-       /* Bundle configs = getIntent().getExtras();
-        int velocidade = configs.getInt("velocidade");
-        int qtd_Pecas = configs.getInt("nivel");*/
+
+        //Bundle configs = getIntent().getExtras();
+        SharedPreferences prefs = getSharedPreferences("PREFS_NAME",MODE_PRIVATE);
+        velocidade = prefs.getInt("velocidade", 1);
+        nivel = prefs.getInt("nivel", 2);
+
+
+        Log.i("JOGO", "velocidade: " + velocidade + " nivel: " + nivel);
 
         pontos = findViewById(R.id.text);
         imagem = findViewById(R.id.imageView);
