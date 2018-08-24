@@ -1,4 +1,20 @@
 <resources>
+
     <string name="app_name">Tetris(Hudson)</string>
-    <string name="start_game">Start Game</string>
+    <!-- Activity_main-->
+    <string name="iniciar_jogo">Iniciar Jogo</string>
+    <string name="configuracoes">Configurações</string>
+    <!--Activity_result-->
+    <string name="fim_de_jogo">Fim de Jogo</string>
+    <string name="pontos">Pontos</string>
+    <string name="record">Record</string>
+    <string name="iniciar_novo_jogo">Iniciar Novo Jogo</string>
+    <string name="sair">Sair</string>
+    <!--Activity_game-->
+    <string name="proximo">Próximo</string>
+    <!--Activity_configurações-->
+    <string name="pecas_partida">Selecione a Quantidade de Peças da Partida</string>
+    <string name="velovidade_jogo">Velocidade do jogo</string>
+
+
 </resources>

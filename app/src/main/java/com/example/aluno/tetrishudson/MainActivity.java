@@ -15,11 +15,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void onClick(View v){
-        Intent intent = new Intent(MainActivity.this, ResultActivity.class);
-        startActivity(intent);
-    }
-
     public void settings(View v){
         Intent intent = new Intent(MainActivity.this, ConfigActivity.class);
         startActivity(intent);
@@ -27,6 +22,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void IniciarGame(View v){
         Intent intent = new Intent(MainActivity.this, GameActivity.class);
+        startActivity(intent);
     }
-
 }

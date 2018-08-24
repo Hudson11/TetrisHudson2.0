@@ -26,21 +26,21 @@
         android:layout_marginBottom="42dp"
         android:layout_marginEnd="32dp"
         android:layout_marginStart="59dp"
-        android:text="SETTINGS"
-        android:textSize="40dp"
+        android:text="@string/configuracoes"
+        android:textSize="30dp"
         app:layout_constraintBottom_toTopOf="@+id/textView7"
         app:layout_constraintEnd_toStartOf="@+id/imageView4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/text1"
         android:layout_width="129dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="28dp"
-        android:text="Velocidade do Jogo"
-        app:layout_constraintBottom_toTopOf="@+id/radioGroup4"
+        android:layout_marginTop="20dp"
+        android:text="@string/velovidade_jogo"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup"
         tools:ignore="MissingConstraints" />
@@ -50,15 +50,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="37dp"
-        android:layout_marginStart="17dp"
+        android:layout_marginStart="16dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/textView6"
+        app:layout_constraintBottom_toTopOf="@+id/text1"
         app:layout_constraintStart_toStartOf="@+id/textView7"
         app:layout_constraintTop_toBottomOf="@+id/textView7"
         tools:ignore="MissingConstraints">
 
         <RadioButton
-            android:id="@+id/radioButton6"
+            android:id="@+id/radioButton1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -66,35 +66,35 @@
             android:text="2" />
 
         <RadioButton
-            android:id="@+id/radioButton5"
+            android:id="@+id/radioButton2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="3" />
 
         <RadioButton
-            android:id="@+id/radioButton4"
+            android:id="@+id/radioButton3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="4" />
 
         <RadioButton
-            android:id="@+id/radioButton3"
+            android:id="@+id/radioButton4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="5" />
 
         <RadioButton
-            android:id="@+id/radioButton2"
+            android:id="@+id/radioButton5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="6" />
 
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/radioButton6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -106,14 +106,14 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginBottom="28dp"
-        android:text="Selecione a Quantidade de Peças da Partida"
+        android:text="@string/pecas_partida"
         app:layout_constraintBottom_toTopOf="@+id/radioGroup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <RadioGroup
-        android:id="@+id/radioGroup4"
+        android:id="@+id/radioGroup1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="42dp"
@@ -121,11 +121,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/text1"
         tools:ignore="MissingConstraints">
 
         <RadioButton
-            android:id="@+id/radioButton9"
+            android:id="@+id/radioButton7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -139,7 +139,7 @@
             android:text="300" />
 
         <RadioButton
-            android:id="@+id/radioButton7"
+            android:id="@+id/radioButton9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -148,16 +148,14 @@
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="0dp"
+        android:layout_width="57dp"
         android:layout_height="55dp"
-        android:layout_marginBottom="40dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginTop="28dp"
         app:layout_constraintBottom_toTopOf="@+id/textView7"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.428"
-        app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        app:layout_constraintVertical_bias="0.935"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/configs" />
 </android.support.constraint.ConstraintLayout>
