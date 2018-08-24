@@ -23,25 +23,33 @@ public class GameActivity extends AppCompatActivity {
     GridLayout layout;
     TextView pontos;
 
+    //peças
+    ArrayList<Integer[]> quadrado;
+    ArrayList<Integer[]> l_esquerda;
+    ArrayList<Integer[]> l_direita;
+    ArrayList<Integer[]> reto_horizontal;
+    ArrayList<Integer[]> reto_vertical;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-        //
+        //Configuração Padrão, vale caso seja instalado do 0 e o usuário ainda não tem configurado as dificuldades do jogo.
         int velocidade = 400, nivel = 4;
-        //Recebe informações passadas através da Intent criada em Config.activity
 
-        //Bundle configs = getIntent().getExtras();
+
+        //Recebe informações de Configurações selecionadas em ConfigActivity
         SharedPreferences prefs = getSharedPreferences("PREFS_NAME",MODE_PRIVATE);
         velocidade = prefs.getInt("velocidade", 1);
         nivel = prefs.getInt("nivel", 2);
 
-
+        //checar se as informações foram corretamente passadas
         Log.i("JOGO", "velocidade: " + velocidade + " nivel: " + nivel);
 
-        pontos = findViewById(R.id.text);
-        imagem = findViewById(R.id.imageView);
+
+        pontos = findViewById(R.id.pontos);
+        imagem = findViewById(R.id.proxima);
 
         //matriz de referências
         referencia = new int[EIXO_X][EIXO_Y];
@@ -81,8 +89,33 @@ public class GameActivity extends AppCompatActivity {
         }
 
 
-    }
+        /*referencia[10][10] = 5;
 
+        for(int i = 0; i < layout.getRowCount(); i++){
+            for(int j = 0; j < layout.getColumnCount(); j++){
+                if(referencia[i][j] == 5){
+                    borda[i][j].setImageResource(R.drawable.blocowhitep);
+                }
+            }
+        }*/
+        boolean pausa = true;
+
+        while(pausa){
+
+            new Thread (new Runnable() {
+                public void run(){
+
+                    for(int i = 0, j = 0; i < EIXO_X; i++, j++){
+
+                    }
+                }
+            }).start();
+
+        }
+    }
+    public void inicia_peca(){
+        //quadrado = new ArrayList<>(new int[2], new int[2], new int[2], new int [2]);
+    }
 }
 
 
