@@ -36,15 +36,9 @@ public class ConfigActivity extends AppCompatActivity {
 
         if(selecionado == R.id.radioButton1){
             g.check(R.id.radioButton1);
-        }else if (selecionado == R.id.radioButton2){
-            g.check(R.id.radioButton2);
-        }else if (selecionado == R.id.radioButton3){
+        } else if (selecionado == R.id.radioButton3){
             g.check(R.id.radioButton3);
-        }else if (selecionado == R.id.radioButton4){
-            g.check(R.id.radioButton4);
-        }else if (selecionado == R.id.radioButton5){
-            g.check(R.id.radioButton5);
-        }else {
+        } else {
             g.check(R.id.radioButton6);
         }
 
@@ -72,19 +66,10 @@ public class ConfigActivity extends AppCompatActivity {
         if(g.getCheckedRadioButtonId() == R.id.radioButton1){
             selecionado_radio = g.getCheckedRadioButtonId();
             selecionado = 2;
-        }else if (g.getCheckedRadioButtonId() == R.id.radioButton2){
-            selecionado_radio = g.getCheckedRadioButtonId();
-            selecionado = 3;
-        }else if (g.getCheckedRadioButtonId() == R.id.radioButton3){
+        } else if (g.getCheckedRadioButtonId() == R.id.radioButton3){
             selecionado_radio = g.getCheckedRadioButtonId();
             selecionado = 4;
-        }else if (g.getCheckedRadioButtonId() == R.id.radioButton4){
-            selecionado_radio = g.getCheckedRadioButtonId();
-            selecionado = 5;
-        }else if (g.getCheckedRadioButtonId() == R.id.radioButton5){
-            selecionado_radio = g.getCheckedRadioButtonId();
-            selecionado = 6;
-        }else {
+        } else {
             selecionado_radio = g.getCheckedRadioButtonId();
             selecionado = 7;
         }
@@ -92,13 +77,13 @@ public class ConfigActivity extends AppCompatActivity {
         //O mesmo acontece aqui, só q para velocidade
         if(v.getCheckedRadioButtonId() == R.id.radioButton7){
             selecionado_radio1 = v.getCheckedRadioButtonId();
-            selecionado2 = 400;
+            selecionado2 = 500;
         }else if (v.getCheckedRadioButtonId() == R.id.radioButton8){
             selecionado_radio1 = v.getCheckedRadioButtonId();
-            selecionado2 = 700;
+            selecionado2 = 400;
         }else {
             selecionado_radio1 = v.getCheckedRadioButtonId();
-            selecionado2 = 1000;
+            selecionado2 = 200;
         }
 
         Intent intent = new Intent();

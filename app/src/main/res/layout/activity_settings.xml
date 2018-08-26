@@ -35,7 +35,7 @@
 
     <TextView
         android:id="@+id/text1"
-        android:layout_width="129dp"
+        android:layout_width="152dp"
         android:layout_height="0dp"
         android:layout_marginTop="20dp"
         android:text="@string/velovidade_jogo"
@@ -50,7 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="37dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="76dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/text1"
         app:layout_constraintStart_toStartOf="@+id/textView7"
@@ -66,32 +66,11 @@
             android:text="2" />
 
         <RadioButton
-            android:id="@+id/radioButton2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="3" />
-
-        <RadioButton
             android:id="@+id/radioButton3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="4" />
-
-        <RadioButton
-            android:id="@+id/radioButton4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="5" />
-
-        <RadioButton
-            android:id="@+id/radioButton5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="6" />
 
         <RadioButton
             android:id="@+id/radioButton6"
@@ -129,21 +108,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="400" />
+            android:text="@string/facil" />
 
         <RadioButton
             android:id="@+id/radioButton8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="700" />
+            android:text="@string/medio" />
 
         <RadioButton
             android:id="@+id/radioButton9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="1000" />
+            android:text="@string/dificil" />
     </RadioGroup>
 
     <ImageView

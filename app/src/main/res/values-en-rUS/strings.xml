@@ -10,6 +10,10 @@
     <string name="sair">Exit</string>
     <string name="proximo">Next</string>
     <string name="pecas_partida">Select the Starting Pieces</string>
-    <string name="velovidade_jogo">" Game speed"</string>
+    <string name="velovidade_jogo">" Choose Game Level"</string>
     <string name="aplicar">" To apply"</string>
+    <string name="facil" translatable="false">Easy</string>
+    <string name="medio" translatable="false">Medium</string>
+    <string name="dificil" translatable="false">Hard</string>
+    <string name="nivel" translatable="false">" adjusted level"</string>
 </resources>
