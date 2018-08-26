@@ -1,4 +1,4 @@
-package com.example.aluno.tetrishudson;
+package com.example.aluno.tetrishudson.Activity_class;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+
+import com.example.aluno.tetrishudson.R;
 
 public class ConfigActivity extends AppCompatActivity {
 
@@ -124,7 +126,7 @@ public class ConfigActivity extends AppCompatActivity {
     }
 
     public void aplicar(View v){
-        Toast.makeText(this, "Níveis Ajustados", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Nível Ajustado", Toast.LENGTH_SHORT).show();
         finish();
     }
 }

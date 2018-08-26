@@ -1,9 +1,11 @@
-package com.example.aluno.tetrishudson;
+package com.example.aluno.tetrishudson.Activity_class;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+
+import com.example.aluno.tetrishudson.R;
 
 public class ResultActivity extends AppCompatActivity {
 

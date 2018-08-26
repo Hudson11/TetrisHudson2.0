@@ -1,20 +1,21 @@
 <resources>
 
-    <string name="app_name">Tetris(Hudson)</string>
+    <string name="app_name" translatable="false">Tetris(Hudson)</string>
     <!-- Activity_main-->
-    <string name="iniciar_jogo">Iniciar Jogo</string>
-    <string name="configuracoes">Configurações</string>
+    <string name="iniciar_jogo" translatable="false">Iniciar Jogo</string>
+    <string name="configuracoes" translatable="false">Configurações</string>
     <!--Activity_result-->
-    <string name="fim_de_jogo">Fim de Jogo</string>
-    <string name="pontos">Pontos</string>
-    <string name="record">Record</string>
-    <string name="iniciar_novo_jogo">Iniciar Novo Jogo</string>
-    <string name="sair">Sair</string>
+    <string name="fim_de_jogo" translatable="false">Fim de Jogo</string>
+    <string name="pontos" translatable="false">Pontos</string>
+    <string name="record" translatable="false">Record</string>
+    <string name="iniciar_novo_jogo" translatable="false">Iniciar Novo Jogo</string>
+    <string name="sair" translatable="false">Sair</string>
     <!--Activity_game-->
-    <string name="proximo">Próximo</string>
+    <string name="proximo" translatable="false">Próximo</string>
     <!--Activity_configurações-->
-    <string name="pecas_partida">Selecione a Quantidade de Peças da Partida</string>
-    <string name="velovidade_jogo">Velocidade do jogo</string>
-    <string name="aplicar">Aplicar</string>
+    <string name="pecas_partida" translatable="false">Selecione a Quantidade de Peças da Partida</string>
+    <string name="velovidade_jogo" translatable="false">Velocidade do jogo</string>
+    <string name="aplicar" translatable="false">Aplicar</string>
+    <string name="nivel">Nivel Ajustado</string>
 
 </resources>
