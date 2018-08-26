@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tetris(Hudson)</string>
+    <string name="iniciar_jogo">Start Game</string>
+    <string name="configuracoes">Settings</string>
+    <string name="fim_de_jogo">Game Over</string>
+    <string name="pontos">Points</string>
+    <string name="record">Record</string>
+    <string name="iniciar_novo_jogo">Start New Game</string>
+    <string name="sair">Exit</string>
+    <string name="proximo">Next</string>
+    <string name="pecas_partida">Select the Starting Pieces</string>
+    <string name="velovidade_jogo">" Game speed"</string>
+    <string name="aplicar">" To apply"</string>
+</resources>
