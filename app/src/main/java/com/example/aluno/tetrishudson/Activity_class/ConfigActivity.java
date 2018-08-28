@@ -80,10 +80,10 @@ public class ConfigActivity extends AppCompatActivity {
             selecionado2 = 500;
         }else if (v.getCheckedRadioButtonId() == R.id.radioButton8){
             selecionado_radio1 = v.getCheckedRadioButtonId();
-            selecionado2 = 400;
+            selecionado2 = 300;
         }else {
             selecionado_radio1 = v.getCheckedRadioButtonId();
-            selecionado2 = 200;
+            selecionado2 = 100;
         }
 
         Intent intent = new Intent();
