@@ -128,61 +128,74 @@ public class GameActivity extends AppCompatActivity {
                     handle.post(new Runnable() {
                         @Override
                         public void run() {
-                            //Log.i("EXECUTA", "executou1");
 
                             int peça_number = createRadom_Peça();
 
-                            if(peça_number == 0) {
+                            if (peça_number == 0) {
                                 peça = new Peca_1();
-                            }else if(peça_number == 1){
+                            } else if (peça_number == 1) {
                                 peça = new Peca_2();
-                            }else if(peça_number == 2){
+                            } else if (peça_number == 2) {
                                 peça = new Peca_3();
-                            }else if(peça_number == 3){
+                            } else if (peça_number == 3) {
                                 peça = new Peca_4();
-                            }else if(peça_number == 4){
+                            } else if (peça_number == 4) {
                                 peça = new Peca_5();
-                            }else if(peça_number == 5){
+                            } else if (peça_number == 5) {
                                 peça = new Peca_6();
-                            }else{
+                            } else {
                                 peça = new Peca_7();
                             }
 
-                            Log.i("PEÇA", "peça: "+ peça_number);
+                            Log.i("PEÇA", "peça: " + peça_number);
+
                             Log.i("EXECUTA", "eixo x " + peça.getPontos().get(0)[0] + " eixo y " + peça.getPontos().get(0)[1]);
                             Log.i("EXECUTA", "eixo x " + peça.getPontos().get(1)[0] + " eixo y " + peça.getPontos().get(1)[1]);
                             Log.i("EXECUTA", "eixo x " + peça.getPontos().get(2)[0] + " eixo y " + peça.getPontos().get(2)[1]);
                             Log.i("EXECUTA", "eixo x " + peça.getPontos().get(3)[0] + " eixo y " + peça.getPontos().get(3)[1]);
 
-                            borda[peça.getPontos().get(0)[0]][peça.getPontos().get(0)[1]].setImageResource(R.drawable.blocograyp);
-                            borda[peça.getPontos().get(1)[0]][peça.getPontos().get(1)[1]].setImageResource(R.drawable.blocograyp);
-                            borda[peça.getPontos().get(2)[0]][peça.getPontos().get(2)[1]].setImageResource(R.drawable.blocograyp);
-                            borda[peça.getPontos().get(3)[0]][peça.getPontos().get(3)[1]].setImageResource(R.drawable.blocograyp);
-
-
+                            int cont = 0;
                             boolean laço = true;
-                            /*while(laço) {
-                                for (int i = 0; i < EIXO_X; i++) {
-                                    for (int j = 0; j < EIXO_Y; j++) {
-                                        if (i == peça.getPontos().get(0)[0] && j == peça.getPontos().get(0)[1]
-                                                || i == peça.getPontos().get(1)[0] && j == peça.getPontos().get(1)[1]
-                                                || i == peça.getPontos().get(2)[0] && j == peça.getPontos().get(2)[1]
-                                                || i == peça.getPontos().get(3)[0] && j == peça.getPontos().get(3)[1]) {
 
-                                            //peça.getPontos().get(i)[0] = peça.getPontos().get(i)[0] + 1;
-                                            // 1 indica a presença da peça na atual posição de referência
-                                            referencia[i + 1][j] = 1;
-                                            borda[i + 1][j].setImageResource(R.drawable.blocograyp);
-                                        }
-                                    }
+                            while(laço) {
+                                try {
+                                    Thread.sleep(velocidade);
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
                                 }
-                                repete = false;
-                            }*/
+                                Log.i("ENTROU", "Laço esta sendo executado" + cont);
+
+                                borda[peça.getPontos().get(0)[0]][peça.getPontos().get(0)[1]].setImageResource(R.drawable.blocograyp);
+                                borda[peça.getPontos().get(1)[0]][peça.getPontos().get(1)[1]].setImageResource(R.drawable.blocograyp);
+                                borda[peça.getPontos().get(2)[0]][peça.getPontos().get(2)[1]].setImageResource(R.drawable.blocograyp);
+                                borda[peça.getPontos().get(3)[0]][peça.getPontos().get(3)[1]].setImageResource(R.drawable.blocograyp);
+
+
+                                borda[peça.getPontos().get(0)[0]][peça.getPontos().get(0)[1]].setImageResource(R.drawable.blocoblackp);
+                                borda[peça.getPontos().get(1)[0]][peça.getPontos().get(1)[1]].setImageResource(R.drawable.blocoblackp);
+                                borda[peça.getPontos().get(2)[0]][peça.getPontos().get(2)[1]].setImageResource(R.drawable.blocoblackp);
+                                borda[peça.getPontos().get(3)[0]][peça.getPontos().get(3)[1]].setImageResource(R.drawable.blocoblackp);
+
+                                cont++;
+
+                                peça.getPontos().get(0)[0] = +cont;
+                                peça.getPontos().get(1)[0] = +cont;
+                                peça.getPontos().get(2)[0] = +cont;
+                                peça.getPontos().get(3)[0] = +cont;
+
+                                if (cont == 34) {
+                                    laço = false;
+                                }
+                            }
                         }
                     });
-                    repete = false;
                 }
             }
         }).start();
     }
 }
+
+/*referencia[i + 1][j] =9;
+        referencia[i][j] = 0;
+        borda[i][j].setImageResource(R.drawable.blocoblackp);
+        borda[i + 1][j].setImageResource(R.drawable.blocograyp);*/
