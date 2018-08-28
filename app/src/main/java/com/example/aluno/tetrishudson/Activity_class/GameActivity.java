@@ -26,6 +26,8 @@ public class GameActivity extends AppCompatActivity {
 
     static final int EIXO_X = 35;
     static final int EIXO_Y = 25;
+    boolean nova_peça = true;
+    int cont = 0;
 
     ImageView[][] borda;
     ImageView imagem;
@@ -118,6 +120,7 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void run() {
                 //Log.i("EXECUTA", "executou");
+                //boolean nova_peça = true;
                 while(repete){
                     try{
                         Thread.sleep(velocidade);
@@ -129,64 +132,56 @@ public class GameActivity extends AppCompatActivity {
                         @Override
                         public void run() {
 
-                            int peça_number = createRadom_Peça();
+                            if(nova_peça == true) {
 
-                            if (peça_number == 0) {
-                                peça = new Peca_1();
-                            } else if (peça_number == 1) {
-                                peça = new Peca_2();
-                            } else if (peça_number == 2) {
-                                peça = new Peca_3();
-                            } else if (peça_number == 3) {
-                                peça = new Peca_4();
-                            } else if (peça_number == 4) {
-                                peça = new Peca_5();
-                            } else if (peça_number == 5) {
-                                peça = new Peca_6();
-                            } else {
-                                peça = new Peca_7();
+                                int peça_number = createRadom_Peça();
+                                Log.i("PEÇA", "peça: " + peça_number);
+
+                                if (peça_number == 0) {
+                                    peça = new Peca_1();
+                                } else if (peça_number == 1) {
+                                    peça = new Peca_2();
+                                } else if (peça_number == 2) {
+                                    peça = new Peca_3();
+                                } else if (peça_number == 3) {
+                                    peça = new Peca_4();
+                                } else if (peça_number == 4) {
+                                    peça = new Peca_5();
+                                } else if (peça_number == 5) {
+                                    peça = new Peca_6();
+                                } else {
+                                    peça = new Peca_7();
+                                }
+
+                                nova_peça = false;
                             }
 
-                            Log.i("PEÇA", "peça: " + peça_number);
 
                             Log.i("EXECUTA", "eixo x " + peça.getPontos().get(0)[0] + " eixo y " + peça.getPontos().get(0)[1]);
                             Log.i("EXECUTA", "eixo x " + peça.getPontos().get(1)[0] + " eixo y " + peça.getPontos().get(1)[1]);
                             Log.i("EXECUTA", "eixo x " + peça.getPontos().get(2)[0] + " eixo y " + peça.getPontos().get(2)[1]);
                             Log.i("EXECUTA", "eixo x " + peça.getPontos().get(3)[0] + " eixo y " + peça.getPontos().get(3)[1]);
 
-                            int cont = 0;
-                            boolean laço = true;
 
-                            while(laço) {
-                                try {
-                                    Thread.sleep(velocidade);
-                                } catch (InterruptedException e) {
-                                    e.printStackTrace();
-                                }
-                                Log.i("ENTROU", "Laço esta sendo executado" + cont);
+                            Log.i("ENTROU", "Laço esta sendo executado" + cont);
 
-                                borda[peça.getPontos().get(0)[0]][peça.getPontos().get(0)[1]].setImageResource(R.drawable.blocograyp);
-                                borda[peça.getPontos().get(1)[0]][peça.getPontos().get(1)[1]].setImageResource(R.drawable.blocograyp);
-                                borda[peça.getPontos().get(2)[0]][peça.getPontos().get(2)[1]].setImageResource(R.drawable.blocograyp);
-                                borda[peça.getPontos().get(3)[0]][peça.getPontos().get(3)[1]].setImageResource(R.drawable.blocograyp);
+                            borda[peça.getPontos().get(0)[0]][peça.getPontos().get(0)[1]].setImageResource(R.drawable.blocograyp);
+                            borda[peça.getPontos().get(1)[0]][peça.getPontos().get(1)[1]].setImageResource(R.drawable.blocograyp);
+                            borda[peça.getPontos().get(2)[0]][peça.getPontos().get(2)[1]].setImageResource(R.drawable.blocograyp);
+                            borda[peça.getPontos().get(3)[0]][peça.getPontos().get(3)[1]].setImageResource(R.drawable.blocograyp);
 
+                            cont++;
 
-                                borda[peça.getPontos().get(0)[0]][peça.getPontos().get(0)[1]].setImageResource(R.drawable.blocoblackp);
-                                borda[peça.getPontos().get(1)[0]][peça.getPontos().get(1)[1]].setImageResource(R.drawable.blocoblackp);
-                                borda[peça.getPontos().get(2)[0]][peça.getPontos().get(2)[1]].setImageResource(R.drawable.blocoblackp);
-                                borda[peça.getPontos().get(3)[0]][peça.getPontos().get(3)[1]].setImageResource(R.drawable.blocoblackp);
+                            peça.getPontos().get(0)[0] = +cont;
+                            peça.getPontos().get(1)[0] = +cont;
+                            peça.getPontos().get(2)[0] = +cont;
+                            peça.getPontos().get(3)[0] = +cont;
 
-                                cont++;
-
-                                peça.getPontos().get(0)[0] = +cont;
-                                peça.getPontos().get(1)[0] = +cont;
-                                peça.getPontos().get(2)[0] = +cont;
-                                peça.getPontos().get(3)[0] = +cont;
-
-                                if (cont == 34) {
-                                    laço = false;
-                                }
+                            if (cont == 34) {
+                                 nova_peça = true;
+                                 repete = false;
                             }
+
                         }
                     });
                 }
