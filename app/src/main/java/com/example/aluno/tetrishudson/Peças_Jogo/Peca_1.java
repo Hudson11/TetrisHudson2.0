@@ -26,11 +26,36 @@ public class Peca_1 extends Pecas{
     }
 
     /*
-    * Representação da Peça
-    *         *
-    *        ***
-    *
+    *   Representação da peça
+    *       *
+    *      ***
     * */
+    @Override
+    public void left(){
+        pontos.get(0)[1] -= 1;
+        pontos.get(1)[1] -= 1;
+        pontos.get(2)[1] -= 1;
+        pontos.get(3)[1] -= 1;
+    }
 
+    @Override
+    public void right() {
+        pontos.get(0)[1] += 1;
+        pontos.get(1)[1] += 1;
+        pontos.get(2)[1] += 1;
+        pontos.get(3)[1] += 1;
+    }
 
+    @Override
+    public void rotate(){
+        pontos.get(0)[0] += 1;
+        pontos.get(0)[1] += 1;
+
+        pontos.get(1)[0] -= 1;
+        pontos.get(1)[1] += 1;
+
+        pontos.get(2)[0] += 1;
+
+        pontos.get(3)[1] -= 1;
+    }
 }

@@ -6,7 +6,9 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.GridLayout;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -39,6 +41,13 @@ public class GameActivity extends AppCompatActivity {
     //Configuração Padrão, vale caso seja instalado do 0 e o usuário ainda não tem configurado as dificuldades do jogo.
     int velocidade = 400, nivel = 4;
 
+    Pecas peça_atual;
+    Pecas proxima_peça;
+
+    Handler handle = new Handler();
+    boolean repete = true;
+
+    int numero;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,13 +98,14 @@ public class GameActivity extends AppCompatActivity {
                 } else if (y == EIXO_Y - 1) {
                     borda[x][y].setImageResource(R.drawable.blocograyp);
                     referencia[x][y] = 1;
+                }else{
+                    referencia[x][y] = 0;
                 }
                 //Adicionando ao Grid Layout o conteúdo no tabuleiro de imagens na posição X,Y.
                 layout.addView(borda[x][y]);
             }
         }
 
-        createRadom_Peça();
         Movimenta();
     }
 
@@ -103,24 +113,7 @@ public class GameActivity extends AppCompatActivity {
     //******************************************************
     //******************************************************
 
-    public int createRadom_Peça () {
-        Random r = new Random();
-        int aleatorio = r.nextInt(nivel);
-        Log.i("random", "Número random: " + aleatorio);
-        return aleatorio;
-    }
 
-    Pecas peça_atual;
-    Pecas proxima_peça;
-
-    Handler handle = new Handler();
-    boolean repete = true;
-
-    int numero;
-
-    public void setNumero(){
-        numero = 1;
-    }
 
     public void Movimenta () {
 
@@ -200,19 +193,12 @@ public class GameActivity extends AppCompatActivity {
                             Log.i("EXECUTA", "eixo x " + peça_atual.getPontos().get(1)[0] + " eixo y " + peça_atual.getPontos().get(1)[1]);
                             Log.i("EXECUTA", "eixo x " + peça_atual.getPontos().get(2)[0] + " eixo y " + peça_atual.getPontos().get(2)[1]);
                             Log.i("EXECUTA", "eixo x " + peça_atual.getPontos().get(3)[0] + " eixo y " + peça_atual.getPontos().get(3)[1]);
-
-
                             Log.i("ENTROU", "Laço esta sendo executado" + cont);
 
-                           /* borda[peça_atual.getPontos().get(0)[0]][peça_atual.getPontos().get(0)[1]].setImageResource(R.drawable.blocograyp);
-                            borda[peça_atual.getPontos().get(1)[0]][peça_atual.getPontos().get(1)[1]].setImageResource(R.drawable.blocograyp);
-                            borda[peça_atual.getPontos().get(2)[0]][peça_atual.getPontos().get(2)[1]].setImageResource(R.drawable.blocograyp);
-                            borda[peça_atual.getPontos().get(3)[0]][peça_atual.getPontos().get(3)[1]].setImageResource(R.drawable.blocograyp);*/
-
-                            peça_atual.getPontos().get(0)[0] = cont;
-                            peça_atual.getPontos().get(1)[0] = cont;
-                            peça_atual.getPontos().get(2)[0] = cont;
-                            peça_atual.getPontos().get(3)[0] = cont;
+                            peça_atual.getPontos().get(0)[0] += 1;
+                            peça_atual.getPontos().get(1)[0] += 1;
+                            peça_atual.getPontos().get(2)[0] += 1;
+                            peça_atual.getPontos().get(3)[0] += 1;
 
                             referencia[peça_atual.getPontos().get(0)[0]][peça_atual.getPontos().get(0)[1]] = 9;
                             referencia[peça_atual.getPontos().get(1)[0]][peça_atual.getPontos().get(1)[1]] = 9;
@@ -226,11 +212,11 @@ public class GameActivity extends AppCompatActivity {
 
 
                             for(int i = 1; i < EIXO_X - 1; i++){
-                                for(int j = 1; j < EIXO_Y - 1; j++){
-                                    if(referencia[i][j] != 0){
-                                        borda[i][j].setImageResource(R.drawable.blocograyp);
-                                    }else{
+                                for(int j = 1; j < EIXO_Y -1; j++){
+                                    if(referencia[i][j] != 9){
                                         borda[i][j].setImageResource(R.drawable.blocoblackp);
+                                    }else{
+                                        borda[i][j].setImageResource(R.drawable.blocograyp);
                                     }
                                 }
                             }
@@ -241,35 +227,26 @@ public class GameActivity extends AppCompatActivity {
                             referencia[peça_atual.getPontos().get(3)[0]][peça_atual.getPontos().get(3)[1]] = 0;
 
                             cont++;
-                            /*if(peça_atual instanceof Peca_7) {
-                                referencia[peça_atual.getPontos().get(0)[0] - 1][peça_atual.getPontos().get(0)[1]] = 0;
-                                referencia[peça_atual.getPontos().get(1)[0] - 1][peça_atual.getPontos().get(1)[1]] = 0;
-                            }else if(peça_atual instanceof Peca_4){
-                                referencia[peça_atual.getPontos().get(0)[0] - 1][peça_atual.getPontos().get(0)[1]] = 0;
-                                referencia[peça_atual.getPontos().get(1)[0] - 1][peça_atual.getPontos().get(1)[1]] = 0;
-                                referencia[peça_atual.getPontos().get(2)[0] - 1][peça_atual.getPontos().get(1)[1]] = 0;
-                            }else if (peça_atual instanceof Peca_3){
-                                referencia[peça_atual.getPontos().get(0)[0] - 1][peça_atual.getPontos().get(0)[1]] = 0;
-                            }else if(peça_atual instanceof  Peca_6 ){
-                                referencia[peça_atual.getPontos().get(0)[0] -1][peça_atual.getPontos().get(0)[1]] = 0;
-                                referencia[peça_atual.getPontos().get(1)[0] -1][peça_atual.getPontos().get(1)[1]] = 0;
-                                referencia[peça_atual.getPontos().get(3)[0] -1][peça_atual.getPontos().get(3)[1]] = 0;
-                            }else if(peça_atual instanceof Peca_5){
-                                referencia[peça_atual.getPontos().get(0)[0] - 1][peça_atual.getPontos().get(0)[1]] = 0;
-                                referencia[peça_atual.getPontos().get(1)[0] - 1][peça_atual.getPontos().get(1)[1]] = 0;
-                            }else if(peça_atual instanceof Peca_2 ){
-                                referencia[peça_atual.getPontos().get(0)[0] - 1][peça_atual.getPontos().get(0)[1]] = 0;
-                                referencia[peça_atual.getPontos().get(2)[0] - 1][peça_atual.getPontos().get(2)[1]] = 0;
-                            }else{
-                                referencia[peça_atual.getPontos().get(0)[0] - 1][peça_atual.getPontos().get(0)[1]] = 0;
-                                referencia[peça_atual.getPontos().get(1)[0] - 1][peça_atual.getPontos().get(1)[1]] = 0;
-                                referencia[peça_atual.getPontos().get(3)[0] - 1][peça_atual.getPontos().get(3)[1]] = 0;
-                            }*/
 
-                                if (cont == 32) {
-                                 nova_peça = true;
-                                 numero = 0;
-                                 repete = false;
+                            if (referencia[peça_atual.getPontos().get(3)[0] + 1][peça_atual.getPontos().get(3)[1]] == 1) {
+                                nova_peça = true;
+                                numero = 0;
+                                cont = 1;
+
+                               /* borda[peça_atual.getPontos().get(0)[0]][peça_atual.getPontos().get(0)[0]].setImageResource(R.drawable.blocoblackp);
+                                borda[peça_atual.getPontos().get(1)[0]][peça_atual.getPontos().get(1)[1]].setImageResource(R.drawable.blocoblackp);
+                                borda[peça_atual.getPontos().get(2)[0]][peça_atual.getPontos().get(2)[1]].setImageResource(R.drawable.blocoblackp);
+                                borda[peça_atual.getPontos().get(3)[0]][peça_atual.getPontos().get(3)[1]].setImageResource(R.drawable.blocoblackp);
+
+                                referencia[peça_atual.getPontos().get(0)[0]][peça_atual.getPontos().get(0)[1]] = 9;
+                                referencia[peça_atual.getPontos().get(1)[0]][peça_atual.getPontos().get(1)[1]] = 9;
+                                referencia[peça_atual.getPontos().get(2)[0]][peça_atual.getPontos().get(2)[1]] = 9;
+                                referencia[peça_atual.getPontos().get(3)[0]][peça_atual.getPontos().get(3)[1]] = 9;
+
+                                peça_atual.getPontos().get(0)[0] = 1;
+                                peça_atual.getPontos().get(1)[0] = 1;
+                                peça_atual.getPontos().get(2)[0] = 1;
+                                peça_atual.getPontos().get(3)[0] = 1;*/
                             }
                         }
                     });
@@ -284,5 +261,32 @@ public class GameActivity extends AppCompatActivity {
 
     public void setRepete(boolean repete) {
         this.repete = repete;
+    }
+    public int createRadom_Peça () {
+        Random r = new Random();
+        int aleatorio = r.nextInt(nivel);
+        Log.i("random", "Número random: " + aleatorio);
+        return aleatorio;
+    }
+
+    public void setNumero(){
+        numero = 1;
+    }
+
+    public void peça_left(View v){
+        ImageButton button = findViewById(R.id.imageButton);
+        peça_atual.left();
+        return;
+    }
+
+    public void peça_right(View v){
+        ImageButton button = findViewById(R.id.imageButton2);
+        peça_atual.right();
+        return;
+    }
+    public void peça_rotate(View v){
+        ImageButton button = findViewById(R.id.imageButton3);
+        peça_atual.rotate();
+        return;
     }
 }

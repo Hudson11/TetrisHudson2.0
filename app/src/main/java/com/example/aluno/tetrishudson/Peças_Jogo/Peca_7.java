@@ -31,39 +31,24 @@ public class Peca_7 extends Pecas {
     *       **
     *
     * */
+    @Override
+    public void left(){
+        pontos.get(0)[1] -= 1;
+        pontos.get(1)[1] -= 1;
+        pontos.get(2)[1] -= 1;
+        pontos.get(3)[1] -= 1;
+    }
+
+    @Override
+    public void right() {
+        pontos.get(0)[1] += 1;
+        pontos.get(1)[1] += 1;
+        pontos.get(2)[1] += 1;
+        pontos.get(3)[1] += 1;
+    }
 
     public void Rotate(){
-
-        int aux1[] = new int[2];
-        int aux2[] = new int[2];
-
-        //Guarda o estado da peça - 1
-        aux1[0] = pontos.get(1)[0];
-        aux1[1] = pontos.get(1)[1];
-
-        //Peça1 recebe a peça0
-        pontos.get(1)[0] = pontos.get(0)[0];
-        pontos.get(1)[1] = pontos.get(0)[1];
-
-        //Guarda o estado da peça2
-        aux2[0] = pontos.get(2)[0];
-        aux2[1] = pontos.get(2)[1];
-
-        //peça2 recebe peça1
-        pontos.get(2)[0] = aux1[0];
-        pontos.get(2)[1] = aux1[1];
-
-        //Guarda estado da peça3
-        aux1[0] = pontos.get(3)[0];
-        aux1[1] = pontos.get(3)[1];
-
-        //peça3 recebe a peça2
-        pontos.get(3)[0] = aux2[0];
-        pontos.get(3)[1] = aux2[1];
-
-        //peça0 recebe peça3
-        pontos.get(0)[0] = aux1[0];
-        pontos.get(0)[0] = aux1[1];
+        return;
     }
 
 }

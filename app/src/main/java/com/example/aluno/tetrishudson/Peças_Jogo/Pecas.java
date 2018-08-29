@@ -18,4 +18,15 @@ public abstract class Pecas {
     public void setPontos(ArrayList<int[]> pontos) {
         this.pontos = pontos;
     }
+
+    public void left(){
+
+    }
+    public void right(){
+
+    }
+
+    public void rotate(){
+
+    }
 }
