@@ -29,11 +29,11 @@ public class GameActivity extends AppCompatActivity {
     static final int EIXO_X = 35;
     static final int EIXO_Y = 25;
     boolean nova_peça = true;
-    int cont = 1;
 
     ImageView[][] borda;
     ImageView imagem;
     int[][] referencia;
+    int[][] fundo;
 
     GridLayout layout;
     TextView pontos;
@@ -46,8 +46,6 @@ public class GameActivity extends AppCompatActivity {
 
     Handler handle = new Handler();
     boolean repete = true;
-
-    int numero;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +67,9 @@ public class GameActivity extends AppCompatActivity {
 
         //matriz de referências
         referencia = new int[EIXO_X][EIXO_Y];
+
+        //matriz para referencia das peças do fundo
+        fundo = new int[EIXO_X][EIXO_Y];
 
         //Matriz de Imagem
         //Tabuleiro
@@ -100,6 +101,7 @@ public class GameActivity extends AppCompatActivity {
                     referencia[x][y] = 1;
                 }else{
                     referencia[x][y] = 0;
+                    fundo[x][y] = 0;
                 }
                 //Adicionando ao Grid Layout o conteúdo no tabuleiro de imagens na posição X,Y.
                 layout.addView(borda[x][y]);
@@ -112,18 +114,17 @@ public class GameActivity extends AppCompatActivity {
     //******************************************************
     //******************************************************
     //******************************************************
-
+    int atual_number, radom;
 
 
     public void Movimenta () {
-
-        setNumero();
 
         new Thread(new Runnable() {
             @Override
             public void run() {
 
                 repete = true;
+
                 while(repete){
                     try{
                         Thread.sleep(velocidade);
@@ -135,65 +136,28 @@ public class GameActivity extends AppCompatActivity {
                         @Override
                         public void run() {
 
-
                           if(nova_peça == true) {
-                               switch (numero) {
-                                   case 1:
-                                       int atual_number = createRadom_Peça();
-                                       if (atual_number == 0) {
-                                           peça_atual = new Peca_1();
-                                       } else if (atual_number == 1) {
-                                           peça_atual = new Peca_2();
-                                       } else if (atual_number == 2) {
-                                           peça_atual = new Peca_3();
-                                       } else if (atual_number == 3) {
-                                           peça_atual = new Peca_4();
-                                       } else if (atual_number == 4) {
-                                           peça_atual = new Peca_5();
-                                       } else if (atual_number == 5) {
-                                           peça_atual = new Peca_6();
-                                       } else {
-                                           peça_atual = new Peca_7();
-                                       }
-                                       Log.i("PEÇA","peça: "+atual_number);
-                                       numero = 0;
-                                       nova_peça = false;
-                                       break;
-                                   case 0:
-                                       int proxima_number = createRadom_Peça();
 
-                                       if (proxima_number == 0) {
-                                           proxima_peça = new Peca_1();
-                                       } else if (proxima_number == 1) {
-                                           proxima_peça = new Peca_2();
-                                       } else if (proxima_number == 2) {
-                                           proxima_peça = new Peca_3();
-                                       } else if (proxima_number == 3) {
-                                           proxima_peça = new Peca_4();
-                                       } else if (proxima_number == 4) {
-                                           proxima_peça = new Peca_5();
-                                       } else if (proxima_number == 5) {
-                                           proxima_peça = new Peca_6();
-                                       } else {
-                                           proxima_peça = new Peca_7();
-                                       }
+                          atual_number = createRadom_Peça();
+                          radom = createRadom_Peça();
 
-                                       peça_atual = proxima_peça;
-                                       nova_peça = false;
-                                       break;
-                                   default:
-                                       Log.i("ERRO", "erro ao criar peça");
-                               }
-                           }
-                           //peça_atual = new Peca_3();
-
-
-
-                            Log.i("EXECUTA", "eixo x " + peça_atual.getPontos().get(0)[0] + " eixo y " + peça_atual.getPontos().get(0)[1]);
-                            Log.i("EXECUTA", "eixo x " + peça_atual.getPontos().get(1)[0] + " eixo y " + peça_atual.getPontos().get(1)[1]);
-                            Log.i("EXECUTA", "eixo x " + peça_atual.getPontos().get(2)[0] + " eixo y " + peça_atual.getPontos().get(2)[1]);
-                            Log.i("EXECUTA", "eixo x " + peça_atual.getPontos().get(3)[0] + " eixo y " + peça_atual.getPontos().get(3)[1]);
-                            Log.i("ENTROU", "Laço esta sendo executado" + cont);
+                          if (atual_number == 0) {
+                              peça_atual = new Peca_1();
+                          } else if (atual_number == 1) {
+                              peça_atual = new Peca_2();
+                          } else if (atual_number == 2) {
+                              peça_atual = new Peca_3();
+                          } else if (atual_number == 3) {
+                              peça_atual = new Peca_4();
+                          } else if (atual_number == 4) {
+                              peça_atual = new Peca_5();
+                          } else if (atual_number == 5) {
+                               peça_atual = new Peca_6();
+                          } else {
+                               peça_atual = new Peca_7();
+                          }
+                            nova_peça = false;
+                          }
 
                             peça_atual.getPontos().get(0)[0] += 1;
                             peça_atual.getPontos().get(1)[0] += 1;
@@ -205,18 +169,26 @@ public class GameActivity extends AppCompatActivity {
                             referencia[peça_atual.getPontos().get(2)[0]][peça_atual.getPontos().get(2)[1]] = 9;
                             referencia[peça_atual.getPontos().get(3)[0]][peça_atual.getPontos().get(3)[1]] = 9;
 
-                            Log.i("Referencia", "eixo x " + referencia[peça_atual.getPontos().get(0)[0]] + " eixo y " + referencia[peça_atual.getPontos().get(0)[1]]);
-                            Log.i("Referencia", "eixo x " + referencia[peça_atual.getPontos().get(1)[0]] + " eixo y " + referencia[peça_atual.getPontos().get(1)[1]]);
-                            Log.i("Referencia", "eixo x " + referencia[peça_atual.getPontos().get(2)[0]] + " eixo y " + referencia[peça_atual.getPontos().get(2)[1]]);
-                            Log.i("Referencia", "eixo x " + referencia[peça_atual.getPontos().get(3)[0]] + " eixo y " + referencia[peça_atual.getPontos().get(3)[1]]);
-
-
                             for(int i = 1; i < EIXO_X - 1; i++){
                                 for(int j = 1; j < EIXO_Y -1; j++){
-                                    if(referencia[i][j] != 9){
+
+                                    if(referencia[i][j] != 9 && fundo[i][j] == 0){
                                         borda[i][j].setImageResource(R.drawable.blocoblackp);
                                     }else{
-                                        borda[i][j].setImageResource(R.drawable.blocograyp);
+                                        if(radom == 0)
+                                            borda[i][j].setImageResource(R.drawable.bloco_amarelo);
+                                        else if(radom == 1)
+                                            borda[i][j].setImageResource(R.drawable.bloco_azul);
+                                        else if(radom == 2)
+                                            borda[i][j].setImageResource(R.drawable.bloco_azul_claro);
+                                        else if(radom == 3)
+                                            borda[i][j].setImageResource(R.drawable.bloco_laranja);
+                                        else if(radom == 4)
+                                            borda[i][j].setImageResource(R.drawable.bloco_red);
+                                        else if(radom == 5)
+                                            borda[i][j].setImageResource(R.drawable.bloco_roxo);
+                                        else
+                                            borda[i][j].setImageResource(R.drawable.bloco_verde);
                                     }
                                 }
                             }
@@ -226,27 +198,19 @@ public class GameActivity extends AppCompatActivity {
                             referencia[peça_atual.getPontos().get(2)[0]][peça_atual.getPontos().get(2)[1]] = 0;
                             referencia[peça_atual.getPontos().get(3)[0]][peça_atual.getPontos().get(3)[1]] = 0;
 
-                            cont++;
+                            if (referencia[peça_atual.getPontos().get(3)[0] + 1][peça_atual.getPontos().get(3)[1]] == 1
+                                    || fundo[peça_atual.getPontos().get(3)[0]+ 1][peça_atual.getPontos().get(3)[1]] != 0
+                                    || fundo[peça_atual.getPontos().get(2)[0]+ 1][peça_atual.getPontos().get(3)[1]] != 0
+                                    || fundo[peça_atual.getPontos().get(1)[0]+ 1][peça_atual.getPontos().get(3)[1]] != 0
+                                    || fundo[peça_atual.getPontos().get(0)[0]+ 1][peça_atual.getPontos().get(3)[1]] != 0){
 
-                            if (referencia[peça_atual.getPontos().get(3)[0] + 1][peça_atual.getPontos().get(3)[1]] == 1) {
                                 nova_peça = true;
-                                numero = 0;
-                                cont = 1;
 
-                               /* borda[peça_atual.getPontos().get(0)[0]][peça_atual.getPontos().get(0)[0]].setImageResource(R.drawable.blocoblackp);
-                                borda[peça_atual.getPontos().get(1)[0]][peça_atual.getPontos().get(1)[1]].setImageResource(R.drawable.blocoblackp);
-                                borda[peça_atual.getPontos().get(2)[0]][peça_atual.getPontos().get(2)[1]].setImageResource(R.drawable.blocoblackp);
-                                borda[peça_atual.getPontos().get(3)[0]][peça_atual.getPontos().get(3)[1]].setImageResource(R.drawable.blocoblackp);
+                                fundo[peça_atual.getPontos().get(0)[0]][peça_atual.getPontos().get(0)[1]] = radom;
+                                fundo[peça_atual.getPontos().get(1)[0]][peça_atual.getPontos().get(1)[1]] = radom;
+                                fundo[peça_atual.getPontos().get(2)[0]][peça_atual.getPontos().get(2)[1]] = radom;
+                                fundo[peça_atual.getPontos().get(3)[0]][peça_atual.getPontos().get(3)[1]] = radom;
 
-                                referencia[peça_atual.getPontos().get(0)[0]][peça_atual.getPontos().get(0)[1]] = 9;
-                                referencia[peça_atual.getPontos().get(1)[0]][peça_atual.getPontos().get(1)[1]] = 9;
-                                referencia[peça_atual.getPontos().get(2)[0]][peça_atual.getPontos().get(2)[1]] = 9;
-                                referencia[peça_atual.getPontos().get(3)[0]][peça_atual.getPontos().get(3)[1]] = 9;
-
-                                peça_atual.getPontos().get(0)[0] = 1;
-                                peça_atual.getPontos().get(1)[0] = 1;
-                                peça_atual.getPontos().get(2)[0] = 1;
-                                peça_atual.getPontos().get(3)[0] = 1;*/
                             }
                         }
                     });
@@ -255,13 +219,6 @@ public class GameActivity extends AppCompatActivity {
         }).start();
     }
 
-    public boolean isRepete() {
-        return repete;
-    }
-
-    public void setRepete(boolean repete) {
-        this.repete = repete;
-    }
     public int createRadom_Peça () {
         Random r = new Random();
         int aleatorio = r.nextInt(nivel);
@@ -269,9 +226,6 @@ public class GameActivity extends AppCompatActivity {
         return aleatorio;
     }
 
-    public void setNumero(){
-        numero = 1;
-    }
 
     public void peça_left(View v){
         ImageButton button = findViewById(R.id.imageButton);

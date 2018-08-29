@@ -5,6 +5,9 @@ import java.util.Arrays;
 
 public class Peca_3 extends Pecas {
 
+    static int vertical = 0;
+    static int horixontal = 1;
+
     public Peca_3(ArrayList<int[]> pontos) {
         super(pontos);
     }
@@ -48,4 +51,24 @@ public class Peca_3 extends Pecas {
         pontos.get(2)[1] += 1;
         pontos.get(3)[1] += 1;
     }
+    /*
+    *   [ ]
+    *   [ ]
+    *   [*] ponto de referencia para o giro [][*][ ][ ]
+     *  [ ]
+    *
+    * */
+
+    @Override
+    public void rotate(){
+
+        if(vertical == 1){
+            pontos.get(0)[0] = pontos.get(2)[0];
+            pontos.get(0)[1] = pontos.get(2)[1] + 2;
+
+            pontos.get(1)[0] = pontos.get(2)[0];
+            pontos.get(1)[0] = pontos.get(2)[1] + 2;
+        }
+    }
+
 }
