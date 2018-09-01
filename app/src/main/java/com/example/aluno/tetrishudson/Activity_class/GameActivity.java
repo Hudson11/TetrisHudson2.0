@@ -1,5 +1,6 @@
 package com.example.aluno.tetrishudson.Activity_class;
 
+import android.arch.lifecycle.ViewModel;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
@@ -22,6 +23,7 @@ import com.example.aluno.tetrishudson.Peças_Jogo.Peca_7;
 import com.example.aluno.tetrishudson.Peças_Jogo.Pecas;
 import com.example.aluno.tetrishudson.R;
 
+
 import java.util.Random;
 
 public class GameActivity extends AppCompatActivity {
@@ -42,10 +44,16 @@ public class GameActivity extends AppCompatActivity {
     int velocidade = 400, nivel = 4;
 
     Pecas peça_atual;
-    Pecas proxima_peça;
 
     Handler handle = new Handler();
     boolean repete = true;
+
+    //CRIANDO A CLASSE PARA SALVAR O ESTADO DA APLICAÇÂO
+    public static class viewModel extends ViewModel{
+        int[][] estado = new int[EIXO_X][EIXO_Y];
+    }
+
+    viewModel viewModel = new viewModel();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,8 +108,8 @@ public class GameActivity extends AppCompatActivity {
                     borda[x][y].setImageResource(R.drawable.blocograyp);
                     referencia[x][y] = 1;
                 }else{
-                    referencia[x][y] = 0;
-                    fundo[x][y] = 0;
+                    referencia[x][y] = -1;
+                    fundo[x][y] = -1;
                 }
                 //Adicionando ao Grid Layout o conteúdo no tabuleiro de imagens na posição X,Y.
                 layout.addView(borda[x][y]);
@@ -157,6 +165,7 @@ public class GameActivity extends AppCompatActivity {
                                peça_atual = new Peca_7();
                           }
                             nova_peça = false;
+                              //peça_atual =  new Peca_5();
                           }
 
                             peça_atual.getPontos().get(0)[0] += 1;
@@ -169,10 +178,11 @@ public class GameActivity extends AppCompatActivity {
                             referencia[peça_atual.getPontos().get(2)[0]][peça_atual.getPontos().get(2)[1]] = 9;
                             referencia[peça_atual.getPontos().get(3)[0]][peça_atual.getPontos().get(3)[1]] = 9;
 
+
                             for(int i = 1; i < EIXO_X - 1; i++){
                                 for(int j = 1; j < EIXO_Y -1; j++){
 
-                                    if(referencia[i][j] != 9 && fundo[i][j] == 0){
+                                    if(referencia[i][j] != 9 && fundo[i][j] == -1){
                                         borda[i][j].setImageResource(R.drawable.blocoblackp);
                                     }else{
                                         if(radom == 0)
@@ -199,10 +209,10 @@ public class GameActivity extends AppCompatActivity {
                             referencia[peça_atual.getPontos().get(3)[0]][peça_atual.getPontos().get(3)[1]] = 0;
 
                             if (referencia[peça_atual.getPontos().get(3)[0] + 1][peça_atual.getPontos().get(3)[1]] == 1
-                                    || fundo[peça_atual.getPontos().get(3)[0]+ 1][peça_atual.getPontos().get(3)[1]] != 0
-                                    || fundo[peça_atual.getPontos().get(2)[0]+ 1][peça_atual.getPontos().get(3)[1]] != 0
-                                    || fundo[peça_atual.getPontos().get(1)[0]+ 1][peça_atual.getPontos().get(3)[1]] != 0
-                                    || fundo[peça_atual.getPontos().get(0)[0]+ 1][peça_atual.getPontos().get(3)[1]] != 0){
+                                    || fundo[peça_atual.getPontos().get(3)[0]+ 1][peça_atual.getPontos().get(3)[1]] != -1
+                                    || fundo[peça_atual.getPontos().get(2)[0]+ 1][peça_atual.getPontos().get(2)[1]] != -1
+                                    || fundo[peça_atual.getPontos().get(1)[0]+ 1][peça_atual.getPontos().get(1)[1]] != -1
+                                    || fundo[peça_atual.getPontos().get(0)[0]+ 1][peça_atual.getPontos().get(0)[1]] != -1){
 
                                 nova_peça = true;
 
@@ -210,7 +220,6 @@ public class GameActivity extends AppCompatActivity {
                                 fundo[peça_atual.getPontos().get(1)[0]][peça_atual.getPontos().get(1)[1]] = radom;
                                 fundo[peça_atual.getPontos().get(2)[0]][peça_atual.getPontos().get(2)[1]] = radom;
                                 fundo[peça_atual.getPontos().get(3)[0]][peça_atual.getPontos().get(3)[1]] = radom;
-
                             }
                         }
                     });
@@ -238,9 +247,17 @@ public class GameActivity extends AppCompatActivity {
         peça_atual.right();
         return;
     }
+
     public void peça_rotate(View v){
         ImageButton button = findViewById(R.id.imageButton3);
         peça_atual.rotate();
         return;
     }
+
+    public void movimenta_baixo(View v){
+        ImageButton button = findViewById(R.id.imageButton4);
+        peça_atual.Movimenta_baixo();
+        return;
+    }
+
 }

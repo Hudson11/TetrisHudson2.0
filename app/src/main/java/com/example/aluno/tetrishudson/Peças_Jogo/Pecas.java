@@ -19,14 +19,29 @@ public abstract class Pecas {
         this.pontos = pontos;
     }
 
-    public void left(){
-
-    }
-    public void right(){
-
-    }
 
     public void rotate(){
 
+    }
+
+    public void left(){
+        pontos.get(0)[1] -= 1;
+        pontos.get(1)[1] -= 1;
+        pontos.get(2)[1] -= 1;
+        pontos.get(3)[1] -= 1;
+    }
+
+    public void right() {
+        pontos.get(0)[1] += 1;
+        pontos.get(1)[1] += 1;
+        pontos.get(2)[1] += 1;
+        pontos.get(3)[1] += 1;
+    }
+
+    public void Movimenta_baixo(){
+        pontos.get(0)[0] += 1;
+        pontos.get(1)[0] += 1;
+        pontos.get(2)[0] += 1;
+        pontos.get(3)[0] += 1;
     }
 }

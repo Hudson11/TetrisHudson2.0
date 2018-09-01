@@ -5,6 +5,8 @@ import java.util.Arrays;
 
 public class Peca_1 extends Pecas{
 
+    int rotacao;
+
     public Peca_1(ArrayList<int[]> pontos) {
         super(pontos);
     }
@@ -30,32 +32,52 @@ public class Peca_1 extends Pecas{
     *       *
     *      ***
     * */
-    @Override
-    public void left(){
-        pontos.get(0)[1] -= 1;
-        pontos.get(1)[1] -= 1;
-        pontos.get(2)[1] -= 1;
-        pontos.get(3)[1] -= 1;
-    }
+
+
+    /*
+    *   fator de rotação
+    *         [R1]      [R1]     [R2][R1][R3]      [R2]
+    *      [R2][*][R3]  [*][R3]      [*]        [*][R1]
+    *                   [R2]                       [R3]
+    *
+    * */
+
 
     @Override
-    public void right() {
-        pontos.get(0)[1] += 1;
-        pontos.get(1)[1] += 1;
-        pontos.get(2)[1] += 1;
-        pontos.get(3)[1] += 1;
-    }
+    public void rotate() {
 
-    @Override
-    public void rotate(){
-        pontos.get(0)[0] += 1;
-        pontos.get(0)[1] += 1;
+        if(rotacao == 0) {
+            pontos.get(1)[0] = pontos.get(2)[0] + 1;
+            pontos.get(1)[1] = pontos.get(2)[1];
+            rotacao = 1;
+        }
+        else if(rotacao == 1) {
+            pontos.get(1)[0] = pontos.get(2)[0] - 1;
+            pontos.get(1)[1] = pontos.get(2)[1] - 1;
 
-        pontos.get(1)[0] -= 1;
-        pontos.get(1)[1] += 1;
+            pontos.get(3)[0] = pontos.get(2)[0] - 1;
+            pontos.get(3)[1] = pontos.get(2)[1] + 1;
+            rotacao++;
+        }
+        else if(rotacao == 2) {
+            pontos.get(0)[0] = pontos.get(2)[0];
+            pontos.get(0)[1] = pontos.get(2)[1] + 1;
 
-        pontos.get(2)[0] += 1;
+            pontos.get(1)[1] = pontos.get(2)[1] + 1;
 
-        pontos.get(3)[1] -= 1;
+            pontos.get(3)[0] = pontos.get(2)[0] + 1;
+            pontos.get(3)[1] = pontos.get(2)[1] + 1;
+            rotacao++;
+        }else{
+            pontos.get(3)[0] = pontos.get(2)[0];
+            pontos.get(3)[1] = pontos.get(2)[1] + 1;
+
+            pontos.get(0)[0] = pontos.get(2)[0] - 1;
+            pontos.get(0)[1] = pontos.get(2)[1];
+
+            pontos.get(1)[0] = pontos.get(2)[0];
+            pontos.get(1)[1] = pontos.get(2)[1] - 1;
+            rotacao = 0;
+        }
     }
 }
