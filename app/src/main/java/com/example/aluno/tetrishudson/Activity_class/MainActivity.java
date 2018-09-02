@@ -18,11 +18,13 @@ public class MainActivity extends AppCompatActivity {
     public void settings(View v){
         Intent intent = new Intent(MainActivity.this, ConfigActivity.class);
         startActivity(intent);
+        finish();
     }
 
     public void IniciarGame(View v){
         Intent intent = new Intent(MainActivity.this, GameActivity.class);
         startActivity(intent);
+        finish();
     }
 
 }

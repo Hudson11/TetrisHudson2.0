@@ -2,6 +2,7 @@ package com.example.aluno.tetrishudson.Activity_class;
 
 import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
@@ -140,6 +141,7 @@ public class GameActivity extends AppCompatActivity {
 
                 viewModel.repete = true;
 
+
                 while(viewModel.repete){
                     try{
                         Thread.sleep(velocidade);
@@ -184,7 +186,6 @@ public class GameActivity extends AppCompatActivity {
                             referencia[viewModel.peça_atual.getPontos().get(2)[0]][viewModel.peça_atual.getPontos().get(2)[1]] = 9;
                             referencia[viewModel.peça_atual.getPontos().get(3)[0]][viewModel.peça_atual.getPontos().get(3)[1]] = 9;
 
-
                             for(int i = 1; i < EIXO_X - 1; i++){
                                 for(int j = 1; j < EIXO_Y - 1; j++){
 
@@ -215,10 +216,19 @@ public class GameActivity extends AppCompatActivity {
                             referencia[viewModel.peça_atual.getPontos().get(3)[0]][viewModel.peça_atual.getPontos().get(3)[1]] = 0;
 
                             if (referencia[viewModel.peça_atual.getPontos().get(3)[0] + 1][viewModel.peça_atual.getPontos().get(3)[1]] == 1
-                                    || viewModel.fundo[viewModel.peça_atual.getPontos().get(3)[0]+ 1][viewModel.peça_atual.getPontos().get(3)[1]] != -1
-                                    || viewModel.fundo[viewModel.peça_atual.getPontos().get(2)[0]+ 1][viewModel.peça_atual.getPontos().get(2)[1]] != -1
-                                    || viewModel.fundo[viewModel.peça_atual.getPontos().get(1)[0]+ 1][viewModel.peça_atual.getPontos().get(1)[1]] != -1
-                                    || viewModel.fundo[viewModel.peça_atual.getPontos().get(0)[0]+ 1][viewModel.peça_atual.getPontos().get(0)[1]] != -1){
+                            || viewModel.fundo[viewModel.peça_atual.getPontos().get(3)[0]+ 1][viewModel.peça_atual.getPontos().get(3)[1]] != -1
+                            || viewModel.fundo[viewModel.peça_atual.getPontos().get(2)[0]+ 1][viewModel.peça_atual.getPontos().get(2)[1]] != -1
+                            || viewModel.fundo[viewModel.peça_atual.getPontos().get(1)[0]+ 1][viewModel.peça_atual.getPontos().get(1)[1]] != -1
+                            || viewModel.fundo[viewModel.peça_atual.getPontos().get(0)[0]+ 1][viewModel.peça_atual.getPontos().get(0)[1]] != -1){
+
+                                if(referencia[viewModel.peça_atual.getPontos().get(3)[0] - 1][viewModel.peça_atual.getPontos().get(3)[1]] == 1
+                                || referencia[viewModel.peça_atual.getPontos().get(2)[0] - 1][viewModel.peça_atual.getPontos().get(2)[1]] == 1
+                                || referencia[viewModel.peça_atual.getPontos().get(1)[0] - 1][viewModel.peça_atual.getPontos().get(1)[1]] == 1
+                                || referencia[viewModel.peça_atual.getPontos().get(0)[0] - 1][viewModel.peça_atual.getPontos().get(0)[1]] == 1){
+                                    Intent intent = new Intent(GameActivity.this, ResultActivity.class);
+                                    startActivity(intent);
+                                    viewModel.repete = false;
+                                }
 
                                 nova_peça = true;
 
@@ -287,5 +297,12 @@ public class GameActivity extends AppCompatActivity {
 
         viewModel.peça_atual.Movimenta_baixo();
         return;
+    }
+
+    @Override
+    public void onStop(){
+        super.onStop();
+
+
     }
 }

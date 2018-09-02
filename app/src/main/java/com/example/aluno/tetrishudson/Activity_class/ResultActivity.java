@@ -18,6 +18,11 @@ public class ResultActivity extends AppCompatActivity {
     public void IniciarNovoGame(View v){
         Intent intent = new Intent(ResultActivity.this, GameActivity.class);
         startActivity(intent);
+        finish();
+    }
+
+    public void sair(View v){
+        finish();
     }
 
 }

@@ -15,6 +15,7 @@
         android:layout_marginBottom="110dp"
         android:background="@drawable/buttons_inicio"
         android:text="@string/sair"
+        android:onClick="sair"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
