@@ -1,11 +1,11 @@
 <resources>
 
-    <string name="app_name">Tetris(Hudson)</string>
+    <string name="app_name" translatable="false">Tetris(Hudson)</string>
     <!-- Activity_main-->
-    <string name="iniciar_jogo">Iniciar Jogo</string>
-    <string name="configuracoes">Configurações</string>
+    <string name="iniciar_jogo" translatable="false">Iniciar Jogo</string>
+    <string name="configuracoes" translatable="false">Configurações</string>
     <!--Activity_result-->
-    <string name="fim_de_jogo">Fim de Jogo</string>
+    <string name="fim_de_jogo" translatable="false">Fim de Jogo</string>
     <string name="pontos" translatable="false">Pontos</string>
     <string name="record" translatable="false">Record</string>
     <string name="iniciar_novo_jogo" translatable="false">Iniciar Novo Jogo</string>
@@ -20,5 +20,6 @@
     <string name="facil" translatable="false">Fácil</string>
     <string name="medio" translatable="false">Médio</string>
     <string name="dificil" translatable="false">Difícil</string>
+    <string name="continuar" translatable="false">Continuar</string>
 
 </resources>

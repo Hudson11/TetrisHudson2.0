@@ -299,10 +299,10 @@ public class GameActivity extends AppCompatActivity {
         return;
     }
 
-    @Override
-    public void onStop(){
-        super.onStop();
+    public void pausar(View v){
+        Intent intent = new Intent(GameActivity.this, MainActivity.class);
+        intent.putExtra("PAUSAR", 1);
 
-
+        startActivity(intent);
     }
 }
