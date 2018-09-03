@@ -17,4 +17,5 @@
     <string name="dificil" translatable="false">Hard</string>
     <string name="nivel" translatable="false">" adjusted level"</string>
     <string name="continuar" translatable="false">Continue</string>
+    <string name="novorecord" translatable="false">New Record</string>
 </resources>

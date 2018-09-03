@@ -53,6 +53,7 @@ public class GameActivity extends AppCompatActivity {
         boolean repete = true;
         TextView pontos;
         ImageView imagem;
+        int ponto = 0;
     }
 
     viewModel viewModel;
@@ -77,6 +78,7 @@ public class GameActivity extends AppCompatActivity {
 
         //Matriz de Imagem
         //Tabuleiro
+        viewModel.pontos = findViewById(R.id.pontos);
         borda = new ImageView[EIXO_X][EIXO_Y];
         proxima_peça = new ImageView[4][4];
 
@@ -226,9 +228,16 @@ public class GameActivity extends AppCompatActivity {
                                 || referencia[viewModel.peça_atual.getPontos().get(1)[0] - 1][viewModel.peça_atual.getPontos().get(1)[1]] == 1
                                 || referencia[viewModel.peça_atual.getPontos().get(0)[0] - 1][viewModel.peça_atual.getPontos().get(0)[1]] == 1){
                                     Intent intent = new Intent(GameActivity.this, ResultActivity.class);
+                                    intent.putExtra("pontos", viewModel.ponto);
                                     startActivity(intent);
                                     viewModel.repete = false;
+                                    finish();
                                 }
+
+                                viewModel.ponto += 50;
+                                //viewModel.pontos.setText(viewModel.ponto);
+                                String aux = " " + viewModel.ponto;
+                                viewModel.pontos.setText(aux);
 
                                 nova_peça = true;
 
